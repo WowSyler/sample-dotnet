@@ -25,12 +25,8 @@ namespace Sample.Controllers
                 return BadRequest(ModelState);
 
             var users = await PrimeApps.GetAllUsers();
-            var userList = users.Select(usr => (User)usr.ToObject(typeof(User))).ToList();
-
-            if (!string.IsNullOrWhiteSpace(user.Email))
-                userList = userList.FindAll(x => x.Email == user.Email);
-
-            return Ok(userList);
+            
+            return Ok(users);
         }
     }
 }
